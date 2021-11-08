@@ -79,3 +79,31 @@ fun `when initialize variables then it should work like Java`() {
     Assertions.assertEquals("Florence", cat.name)
 }
 ```
+
+## Interfaces
+
+As interfaces são semelhantes ao Java, basta usar a palavra-chave interface em vez de class.
+
+Assim como no Java, as classes que implementarem a interface, terão que implementar os métodos.
+
+As interfaces podem possuir properties também, que podem ser finais ou precisam ser implementadas pelas classes.
+
+O método printSongs, por ser implementado em Album, não pode ser overrided pelas classes que implementam a interface.
+```kotlin
+interface Album {
+    fun getSongs() : List<String>
+
+    val gender : String
+
+    fun printSongs() = println("SongList : ${this.getSongs()}")
+}
+
+class Rock : Album {
+
+    override fun getSongs() : List<String> {
+        return emptyList()
+    }
+
+    override val gender = "Rock"
+}
+```
