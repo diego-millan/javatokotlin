@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 
-class InitializeVariables {
+class InitializeVariablesTest {
 
     lateinit var strWithLateInit : String
     lateinit var str2WithLateInit : String
@@ -42,7 +42,7 @@ class InitializeVariables {
     fun `when try to access a lateinit variable never initialized then throws exception` () {
         str2WithLateInit = "valueAssigned"
 
-        Assertions.assertTrue(this@InitializeVariables::str2WithLateInit.isInitialized)
+        Assertions.assertTrue(this@InitializeVariablesTest::str2WithLateInit.isInitialized)
 
         assertThrows<UninitializedPropertyAccessException> {
             strWithLateInit.length

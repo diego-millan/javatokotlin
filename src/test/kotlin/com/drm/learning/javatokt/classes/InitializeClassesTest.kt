@@ -6,7 +6,7 @@ import com.drm.learning.javatokt.domain.Pet
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class InitializeClasses {
+class InitializeClassesTest {
 
     @Test
     fun `when check method apply then it should work like builder`() {

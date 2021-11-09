@@ -10,7 +10,7 @@ No Kotlin, por default, a classe possui o construtor default e o construtor com 
 
 Note que podemos, também, inicializar com um valor default no atributo. 
 ```kotlin
-class Pet () {
+class Pet {
     var name : String
     var gender : String
 }
@@ -30,7 +30,7 @@ val butterfly : Pet = Pet() // obtém valor default
 
 ### Classes abstratas e subclasses
 
-Assim como no java, temos a mesma ideia de uma classe que herda de outra classe, podemos obrigar as classes a implementar métodos abstratos ou impossibilitar sua modificação.
+Assim como no java, temos a mesma ideia de uma classe que herda de outra classe, podemos obrigar as classes a implementar métodos abstratos ou impossibilitar a sua modificação.
 
 No exemplo abaixo, o método **talk** é abstrato, portanto toda classe que herdar de **Pet** terá que implementar.
 
@@ -107,3 +107,65 @@ class Rock : Album {
     override val gender = "Rock"
 }
 ```
+
+## Data Class
+
+Diferente do Java, o Kotlin trata as classes de domínio de maneira simplificada.
+Além de não haver a necessidade de implementar os métodos padrões que as classes de dados possuem, também economizamos nos getters e setters.
+
+Outra particularidade do Data Class, que à primeira vista soa um pouco estranho para os programadores java, é o fato de ser comum teremo várias implementações de data class em um mesmo arquivo.
+
+A motivação para esse comportamento é o fato de não precisar criar várias classes para uma entidade que possui várias entidades que só existem para complementar o parent.
+
+Vamos aos exemplos.
+
+Data Class - Kotlin:
+```kotlin
+data class Person(
+    val name: String,
+    val address: String,
+    val zipCode: String,
+    val age: Int,
+    val birthDate: Date
+)
+```
+
+Entidade no Java:
+```java
+@Data
+public class PersonJava {
+  private String name;
+  private String address;
+  private String zipCode;
+  private Integer age;
+  private Date birthDate;
+}
+```
+
+Note que no java é necessário ter ao menos uma anotação do lombok para automatizar os métodos toString(), getters, setters dos atributos e o hashCode(), enquanto o Data Class por si só já tem isso por debaixo dos panos sem necessidade de uma anotação adicional.
+
+Também não é necessário utilizar o modificador de privacidade no Kotlin, tornando mais enxuto o código. 
+
+Um método adicional que o Kotlin adiciona nos data classes é o copy().
+Como seu nome indica, ele copia os atributos de uma instância do objeto para clonar em outro, podendo alterar alguns atributos.
+
+```kotlin
+@Test
+fun `when try to copy a data class only deserved attribute must change`(){
+    val person = Person(
+        "Diego",
+        "Rua do Hospicio, 257",
+        "52041-302",
+        29,
+        SimpleDateFormat("dd/MM/yyyy").parse("21/01/1987")
+    )
+
+    val copiedPerson = person.copy(address = "Rua Salvador de Sá, 470")
+
+    Assertions.assertEquals(person.address, "Rua do Hospicio, 257")
+    Assertions.assertEquals(copiedPerson.address, "Rua Salvador de Sá, 470")
+}
+```
+
+## Enums
+

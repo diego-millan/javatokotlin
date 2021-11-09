@@ -1,6 +1,6 @@
 package com.drm.learning.javatokt.domain
 
-import java.util.*
+import java.util.Date
 
 data class Person(
     val name: String,
