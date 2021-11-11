@@ -3,6 +3,7 @@ package com.drm.learning.javatokt.classes
 import com.drm.learning.javatokt.domain.Cat
 import com.drm.learning.javatokt.domain.Dog
 import com.drm.learning.javatokt.domain.Pet
+import com.drm.learning.javatokt.domain.enums.SemaphoreEnum
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -25,5 +26,11 @@ class InitializeClassesTest {
         cat.gender = "female"
 
         Assertions.assertEquals("Florence", cat.name)
+    }
+
+    @Test
+    fun `when use enum functions, should return as declared`() {
+        val greenSemaphore = SemaphoreEnum.MOVE
+        Assertions.assertEquals("Green", greenSemaphore.color())
     }
 }

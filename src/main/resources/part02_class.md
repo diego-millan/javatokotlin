@@ -164,8 +164,55 @@ fun `when try to copy a data class only deserved attribute must change`(){
 
     Assertions.assertEquals(person.address, "Rua do Hospicio, 257")
     Assertions.assertEquals(copiedPerson.address, "Rua Salvador de Sá, 470")
+    Assertions.assertEquals(person.name, copiedPerson.name)
 }
 ```
 
 ## Enums
 
+Bastante semelhante ao Java, os Enums do Kotlin possuem a mesma estrutura e são facilmente utilizáveis.
+
+```kotlin
+enum class GenderEnum {
+    MALE,
+    FEMALE,
+    OTHER,
+    UNKNOWN
+} 
+```
+
+Cada constante de um enum é um objeto, e o que os separa é o uso da vírgula.
+
+Enums podem ser inicializados da seguinte forma:
+
+```kotlin
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
+    GREEN(0x00FF00),
+    BLUE(0x0000FF)
+}
+```
+
+Enums também podem declarar os seus próprios métodos anonymous, conforme o exemplo abaixo:
+
+```kotlin
+enum class SemaphoreEnum {
+    STOP {
+        override fun color() = "Red"
+    },
+    ALERT {
+        override fun color() = "Yellow"
+    },
+    MOVE {
+        override fun color() = "Green"
+    };
+
+    abstract fun color(): String
+}
+
+@Test
+fun `when use enum functions, should return as declared`() {
+    val greenSemaphore = SemaphoreEnum.MOVE
+    Assertions.assertEquals("Green", greenSemaphore.color())
+}
+```

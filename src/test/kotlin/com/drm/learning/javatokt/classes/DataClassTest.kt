@@ -21,5 +21,6 @@ class DataClassTest {
 
         Assertions.assertEquals(person.address, "Rua do Hospicio, 257")
         Assertions.assertEquals(copiedPerson.address, "Rua Salvador de Sá, 470")
+        Assertions.assertEquals(person.name, copiedPerson.name)
     }
 }
