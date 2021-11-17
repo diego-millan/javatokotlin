@@ -53,3 +53,39 @@ var str : String? = null
 var number : Int = null // Erro de Sintaxe
 ```
 
+### Lateinit
+
+Sabe aquele trecho de código que você vai utilizar uma variável mas só precisa inicializar ela depois?
+
+Vamos a um exemplo:
+```java
+String str = null;
+
+if (condition()){
+    str = "Thank you!"
+} else {
+    str = "Gracias!!" 
+}
+
+return str;
+```
+
+Existem situações onde as variáveis só vão atribuir valor no decorrer do código, pensando nesses cenários o Kotlin criou o lateinit.
+
+Ele funciona basicamente para avisar que a variável será inicializada posteriormente.
+
+Um uso comum ocorre em casos de fazer injeção de dependências.
+
+```kotlin
+class MyServiceTest {
+    @Mock
+    lateinit var myClient : MyClient
+    
+    lateinit var myService : MyService
+    
+    @BeforeEach
+    fun before() {
+        myService = MyService(myClient)
+    }
+}
+```
