@@ -110,4 +110,15 @@ for (int i = 6; i >= 0; i = i - 2) {
 
 O downTo indica que é um contador de 6 até 0, enquanto o step indica que irá pular a cada 2 índices.
 
-### while
+### while e Do While
+
+O Kotlin possui a mesma estrutura que temos no Java de while e do/while, conforme os exemplos abaixo:
+```kotlin
+while (x > 0) {
+    x--
+}
+
+do {
+    val y = retrieveData()
+} while (y != null) // y is visible here!
+```
