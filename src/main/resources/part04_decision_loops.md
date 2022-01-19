@@ -64,7 +64,7 @@ Note que o uso de { } só é necessário quando precisamos executar uma ação a
 
 ### for
 
-Utilizamos o for no Kotlin de duas formas, a primeira para percorrer collections, arrays e afins, e utilizamos o **in** para isso:
+Utilizamos o for no Kotlin de duas formas, a primeira para percorrer listas (map, list, set), e utilizamos o **in** para isso:
 
 ```kotlin
 for (item in collection) {
