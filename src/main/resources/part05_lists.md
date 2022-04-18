@@ -67,5 +67,6 @@ val anyMutableSet: Set<Any> = setOf(2, 6, 4, 29, 4, 5, "Ajay", "Ashu", "Ajay")
 ```
 
 A diferença entre Set, Map e List são as mesmas que temos no Java, abaixo um link para fixar o tema:
+
 [Map Set and List](https://www.w3schools.blog/list-set-map-java)
 
