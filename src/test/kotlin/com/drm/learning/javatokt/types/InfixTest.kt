@@ -7,8 +7,6 @@ import com.drm.learning.javatokt.soma
 import com.drm.learning.javatokt.toPowerOf
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.*
-import java.io.IOException
 
 class InfixTest {
 
