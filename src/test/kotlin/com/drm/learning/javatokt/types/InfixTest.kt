@@ -1,10 +1,14 @@
 package com.drm.learning.javatokt.types
 
 import com.drm.learning.javatokt.checkUserStatus
+import com.drm.learning.javatokt.domain.enums.SemaphoreEnum
+import com.drm.learning.javatokt.executeWithRetry
 import com.drm.learning.javatokt.soma
 import com.drm.learning.javatokt.toPowerOf
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito.*
+import java.io.IOException
 
 class InfixTest {
 
@@ -25,5 +29,22 @@ class InfixTest {
     @Test
     fun `when use top-level function, it should work without needed to call method class before or instantiate it`(){
         Assertions.assertEquals("online", checkUserStatus())
+    }
+
+    @Test
+    fun `when call throws specific exception, retry should work properly`() {
+        var retries = 0
+        var exceptionsThrow = 0
+        try {
+            executeWithRetry({ e ->
+                (e is IllegalArgumentException).also { if (it) retries++ }
+            }) {
+                SemaphoreEnum.valueOf("invalid")
+            }
+        } catch (e: IllegalArgumentException) {
+            exceptionsThrow++
+        }
+        Assertions.assertEquals(2, retries)
+        Assertions.assertEquals(exceptionsThrow, 1)
     }
 }

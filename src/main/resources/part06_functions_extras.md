@@ -49,9 +49,17 @@ fun `when use extension function of power of a number, it should multiply by its
 
 Funções estáticas são bem comuns no Java, principalmente para os adeptos de classes utilitárias.
 
-As funções top-level no Kotlin são semelhantes, porém ela remove a necessidade de chamar a classe e o método explicitamente.
+As funções Top-level no Kotlin são semelhantes, porém ela remove a necessidade de chamar a classe e o método explicitamente.
 
-utilizando a importação completa do método, a chamada da função torna a classe que possui o método utilitário apenas um detalhe de importação, vamos ao exemplo:
+Utilizando a importação completa do método, a chamada da função torna a classe que possui o método utilitário apenas um detalhe de importação, vamos ao exemplo:
+
+Em Java, temos essa função estática:
+```java
+public static String checkUserStatus() {
+  return "Online"
+} 
+```
+Em Kotlin poderíamos fazer dessa forma:
 
 ```kotlin
 package com.drm.learning.javatokt
@@ -59,7 +67,7 @@ package com.drm.learning.javatokt
 fun checkUserStatus(): String = "Online"
 ```
 
-E o teste unitário:
+A sua chamada se torna mais limpa, como mostra o teste unitário:
 
 ```kotlin
 import com.drm.learning.javatokt.checkUserStatus
