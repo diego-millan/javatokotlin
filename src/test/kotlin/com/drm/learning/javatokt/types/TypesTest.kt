@@ -41,4 +41,10 @@ class TypesTest {
         Assertions.assertFalse(mutableMap.containsKey("c"))
     }
 
+    @Test
+    fun `when get triple by x value, should return properly`() {
+        val triple: Triple<String, String, Int> = Triple("firstValue","secondValue", 1)
+
+    }
+
 }
