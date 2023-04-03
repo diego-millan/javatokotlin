@@ -16,6 +16,9 @@ fun getWithRetry(): String {
     val config = createRetryConfig()
     val registry = RetryRegistry.of(config)
     val retry: Retry = registry.retry("my-first-retry")
+
+    retry.eventPublisher.onRetry { event -> println("Logging retry info: $event") }
+
     val decorateFunction: Supplier<String> = Retry.decorateSupplier(retry) {
         get()
     }
