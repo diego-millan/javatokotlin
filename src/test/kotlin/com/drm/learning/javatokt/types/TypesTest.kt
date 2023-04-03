@@ -4,6 +4,7 @@ import com.drm.learning.javatokt.functions.sumType
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.util.Assert
+import java.lang.RuntimeException
 
 class TypesTest {
 
@@ -44,6 +45,19 @@ class TypesTest {
     @Test
     fun `when get triple by x value, should return properly`() {
         val triple: Triple<String, String, Int> = Triple("firstValue","secondValue", 1)
+
+    }
+
+    @Test
+    fun test() {
+        val mutableMap: MutableMap<String, String> = mutableMapOf("a" to "c")
+        try {
+            mutableMap["F"]
+            throw RuntimeException("eeeee")
+        } catch (e : Exception) {
+            val errorKey = e.message.takeIf { message -> !message.isNullOrBlank() } ?: "outro"
+            println(errorKey)
+        }
 
     }
 
